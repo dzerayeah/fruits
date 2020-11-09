@@ -19,13 +19,7 @@ const App = () => {
 
   const handleChange = (e) => {
     const chosenFruit = fruits.find( fruit => fruit.id == e.target.value)
-    setResult('Не найдено') 
-    if (!e.target.value) {
-      setResult('') 
-    }
-    if (chosenFruit) { 
-      setResult(chosenFruit.value) 
-    }    
+    setResult(chosenFruit ? chosenFruit.value : 'Не найдено')
   }
 
   return (
