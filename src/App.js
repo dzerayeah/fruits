@@ -27,6 +27,10 @@ const App = () => {
     }
     
     if (!Object.keys(fruits).includes(id)) {
+      setResult('Не найдено')
+    }
+
+    if (!id) {
       setResult('')
     }
   }
@@ -35,7 +39,7 @@ const App = () => {
     <div className="app">
       <form className="form">
         <div className="result">{result}</div>
-        <input name="fruitId" onChange={handleChange} />
+        <input name="fruitId" defaultValue="1" onChange={handleChange} />
       </form>
     </div>
   );
