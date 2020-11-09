@@ -2,37 +2,30 @@ import './App.scss';
 import { useState } from 'react';
 
 const App = () => {
-  const fruits = {
-    1: 'Яблоко',
-    2: 'Груша',
-    3: 'Банан',
-    4: 'Киви',
-    5: 'Ананас',
-    6: 'Папайя',
-    7: 'Мандарин',
-    8: 'Апельсин',
-    9: 'Айва',
-    10: 'Лимон',
-  }
+  const fruits = [
+    { id: 1, value: 'Яблоко' },
+    { id: 2, value: 'Груша' },
+    { id: 3, value: 'Банан' },
+    { id: 4, value: 'Киви' },
+    { id: 5, value: 'Ананас' },
+    { id: 6, value: 'Папайя' },
+    { id: 7, value: 'Мандарин' },
+    { id: 8, value: 'Апельсин' },
+    { id: 9, value: 'Айва' },
+    { id: 10, value: 'Лимон' },
+  ]
 
   const [result, setResult] = useState('Яблоко');
 
-  const handleChange = (event) => {
-    const id = event.target.value;
-
-    for (const [key, value] of Object.entries(fruits)) {
-      if (key === id) {
-        setResult(value)
-      } 
+  const handleChange = (e) => {
+    const chosenFruit = fruits.find( fruit => fruit.id == e.target.value)
+    setResult('Не найдено') 
+    if (!e.target.value) {
+      setResult('') 
     }
-    
-    if (!Object.keys(fruits).includes(id)) {
-      setResult('Не найдено')
-    }
-
-    if (!id) {
-      setResult('')
-    }
+    if (chosenFruit) { 
+      setResult(chosenFruit.value) 
+    }    
   }
 
   return (
